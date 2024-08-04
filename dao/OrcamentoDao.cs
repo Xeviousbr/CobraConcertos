@@ -61,9 +61,28 @@ namespace CobraConcertos.dao
             return dt;
         }
 
+        internal DataTable getDados()
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append($@"Select O.dataalteracao, O.Cliente, O.Total, O.Obs, 
+                    C.Telefone, C.Observacao, C.email, C.CgcCpf, C.EmAtraso, c.funcionario 
+                    FROM Orcamento O 
+                    Inner Join Clientes C on C.Nome = O.Cliente ");
+            query.AppendFormat(" WHERE O.Pagamento < #1/1/1990# ");
+            query.Append(" Order By O.dataalteracao ");
+            DataTable dt = DB.ExecutarConsulta(query.ToString());
+            if (dt.Rows.Count == 0)
+            {
+                int x = 0;
+            }
+            return dt;
+        }
+
         internal void InicializaCobrancas()
         {
-            string SQL = "UPDATE Orcamento SET dataalteracao = Data, copiaobs = Obs WHERE Pagamento = #12/30/1899# ";
+            DB.ExecutarComandoSQL("ALTER TABLE Orcamento ADD COLUMN DataAlteracao DATE");
+            DB.ExecutarComandoSQL("ALTER TABLE Orcamento ADD COLUMN CopiaObs MEMO");
+            string SQL = "UPDATE Orcamento SET dataalteracao = Data, copiaobs = Obs WHERE Pagamento < #1/1/1990# ";
             DB.ExecutarComandoSQL(SQL);
         }
     }

@@ -273,37 +273,6 @@ namespace CobraConcertos
             return null;
         }
 
-        public static void CarregarComboBox<T>(ComboBox comboBox, CobraConcertos.dao.BaseDAO classe, string ItemZero = "", string filtro = "", string ordem = "", string ItemFinal = "", string ItemFinal2 = "") where T : CobraConcertos.tb.IDataEntity, new()
-        {
-            DataTable dados = classe.GetDadosOrdenados(filtro, ordem);
-            List<CobraConcertos.tb.ComboBoxItem> lista = new List<CobraConcertos.tb.ComboBoxItem>();
-            if (ItemZero.Length > 0)
-            {
-                CobraConcertos.tb.ComboBoxItem item = new CobraConcertos.tb.ComboBoxItem(0, ItemZero);
-                lista.Add(item);
-            }
-            foreach (DataRow row in dados.Rows)
-            {
-                int id = Convert.ToInt32(row["id"]);
-                string nome = row["Nome"].ToString();
-                CobraConcertos.tb.ComboBoxItem item = new CobraConcertos.tb.ComboBoxItem(id, nome);
-                lista.Add(item);
-            }
-            if (ItemFinal.Length > 0)
-            {
-                CobraConcertos.tb.ComboBoxItem item = new CobraConcertos.tb.ComboBoxItem(0, ItemFinal);
-                lista.Add(item);
-                if (ItemFinal2.Length > 0)
-                {
-                    CobraConcertos.tb.ComboBoxItem item2 = new CobraConcertos.tb.ComboBoxItem(0, ItemFinal2);
-                    lista.Add(item2);
-                }
-            }
-            comboBox.DataSource = lista;
-            comboBox.DisplayMember = "Nome";
-            comboBox.ValueMember = "Id";
-        }
-
         #endregion
 
     }

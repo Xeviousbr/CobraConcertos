@@ -2,10 +2,6 @@ C:\Prog\CobraConsertos\CobraConsertos\obj\Debug\CobraConsertos.csproj.AssemblyRe
 C:\Prog\CobraConsertos\CobraConsertos\obj\Debug\TeleBonifacio.Properties.Resources.resources
 C:\Prog\CobraConsertos\CobraConsertos\obj\Debug\CobraConsertos.csproj.GenerateResource.cache
 C:\Prog\CobraConsertos\CobraConsertos\obj\Debug\CobraConsertos.csproj.CoreCompileInputs.cache
-C:\Prog\CobraConsertos\CobraConsertos\bin\Debug\ATCRecordNavigator.dll
-C:\Prog\CobraConsertos\CobraConsertos\bin\Debug\SourceGrid.dll
-C:\Prog\CobraConsertos\CobraConsertos\bin\Debug\ATCRecordNavigator.pdb
-C:\Prog\CobraConsertos\CobraConsertos\bin\Debug\SourceGrid.xml
 C:\Prog\CobraConsertos\CobraConsertos\bin\Debug\CobraConsertos.exe.config
 C:\Prog\CobraConsertos\CobraConsertos\bin\Debug\CobraConsertos.exe
 C:\Prog\CobraConsertos\CobraConsertos\bin\Debug\CobraConsertos.pdb

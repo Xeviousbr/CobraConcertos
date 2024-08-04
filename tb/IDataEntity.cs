@@ -8,10 +8,7 @@ namespace CobraConcertos.tb
 {
     public interface IDataEntity
     {
-        int Id { get; set; }
-        bool Adicao { get; set; }
-
-        string Nome { get; set; }
+        int ID { get; set; }
     }
 }
 

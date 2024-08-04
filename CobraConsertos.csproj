@@ -71,13 +71,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ATCRecordNavigator">
-      <HintPath>..\..\OrCarro\ATCRecordNavigator\ATCRecordNavigator\ATCRecordNavigator\bin\Debug\ATCRecordNavigator.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="SourceGrid, Version=4.40.4580.29115, Culture=neutral, PublicKeyToken=df6f5e538749e85d, processorArchitecture=MSIL">
-      <HintPath>packages\SourceGrid.4.4.0\lib\net35\SourceGrid.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -96,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="dao\BaseDAO.cs" />
     <Compile Include="dao\OrcamentoDao.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -116,22 +109,14 @@
     <Compile Include="operSQL.designer.cs">
       <DependentUpon>operSQL.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrCarroDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrCarroDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="tb\CampoTagInfo.cs" />
-    <Compile Include="tb\Cliente.cs" />
-    <Compile Include="tb\ComboBoxItem.cs" />
-    <Compile Include="tb\ContasAPagar.cs" />
-    <Compile Include="tb\Encomendas.cs" />
-    <Compile Include="tb\Entregador.cs" />
-    <Compile Include="tb\Entregas.cs" />
-    <Compile Include="tb\Falta .cs" />
-    <Compile Include="tb\Fornecedor.cs" />
-    <Compile Include="tb\Garantias.cs" />
+    <Compile Include="tb\Orcamento.cs" />
     <Compile Include="tb\IDataEntity.cs" />
-    <Compile Include="tb\Produtos.cs" />
-    <Compile Include="tb\Recibo.cs" />
-    <Compile Include="tb\TpoFalta .cs" />
-    <Compile Include="tb\Vendedor.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +133,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="OrCarroDataSet.xsc">
+      <DependentUpon>OrCarroDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrCarroDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrCarroDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrCarroDataSet.xss">
+      <DependentUpon>OrCarroDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

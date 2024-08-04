@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeleBonifacio.tb
+namespace CobraConcertos.tb
 {
     public class Vendedor : IDataEntity
     {

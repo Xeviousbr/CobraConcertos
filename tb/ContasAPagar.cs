@@ -1,7 +1,7 @@
 ﻿using System;
-using TeleBonifacio.tb;
+using CobraConcertos.tb;
 
-namespace TeleBonifacio.tb
+namespace CobraConcertos.tb
 {
     public class ContasAPagar : IDataEntity
     {

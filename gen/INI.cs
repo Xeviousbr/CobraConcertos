@@ -1,8 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace TeleBonifacio
+namespace CobraConcertos
 {
     internal class INI
     {
@@ -15,7 +16,9 @@ namespace TeleBonifacio
         }
         public INI()
         {
-            FileName = @"C:\Entregas\TeleBonifacio.ini";
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = Path.Combine(baseDir, "Orcarro.ini");
+            FileName = fileName;
         }
 
         #endregion

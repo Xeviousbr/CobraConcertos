@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace TeleBonifacio.gen
+namespace CobraConcertos.gen
 {
     public class ValorPorExtenso
     {

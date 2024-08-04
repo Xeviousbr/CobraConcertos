@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TeleBonifacio
+namespace CobraConcertos
 {
     public partial class operSQL : Form
     {

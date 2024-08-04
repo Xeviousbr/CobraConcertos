@@ -1,5 +1,5 @@
 ﻿
-namespace TeleBonifacio
+namespace CobraConcertos
 {
     partial class operSQL
     {

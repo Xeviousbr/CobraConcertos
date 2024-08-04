@@ -1,4 +1,4 @@
-﻿namespace TeleBonifacio.tb
+﻿namespace CobraConcertos.tb
 {
     public class CampoTagInfo
     {

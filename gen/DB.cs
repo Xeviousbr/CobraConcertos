@@ -5,9 +5,9 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeleBonifacio.gen;
+using CobraConcertos.gen;
 
-namespace TeleBonifacio
+namespace CobraConcertos
 {
     public static class DB
     {

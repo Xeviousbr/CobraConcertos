@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TeleBonifacio.Properties {
+namespace CobraConcertos.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

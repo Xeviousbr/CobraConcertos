@@ -9,43 +9,24 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace TeleBonifacio
+namespace CobraConcertos
 {
     public static class glo
     {
         private static string caminhoBase;
 
-        // -1 Avisa para o formulário que é uma adição
-        // 0 Modo neutro
-        // < 0 ID adicionado
-        public static int IdAdicionado=0;
-
-        public static int Nivel = 0;
-        // 0 Balconista, ve só as faltas  
-        // 1 Caixa
-        // 2 Adm
-
-        public static int iUsuario = 0;
         public static bool ODBC = false;
-
-        public static bool Adaptar = false;
 
         public static string CaminhoBase
         {
             get
             {
-                if (string.IsNullOrEmpty(caminhoBase))
-                {
-                    INI MeuIni = new INI();
-                    caminhoBase = MeuIni.ReadString("Config", "Base", "");
-                }
+                caminhoBase = AppDomain.CurrentDomain.BaseDirectory;
                 return caminhoBase;
             }
             set
             {
                 caminhoBase = value;
-                INI MeuIni = new INI();
-                MeuIni.WriteString("Config", "Base", value);
             }
         }
 
@@ -55,12 +36,11 @@ namespace TeleBonifacio
             {
                 if (ODBC)
                 {
-                    glo.Loga("DSN=MbCarros;");
-                    return "connectionString = 'DSN=MbCarros;' ";
-                    // return "Driver={Microsoft Access Driver (*.mdb)};DBQ=\\SERVIDOR\\MbCarros\\MbCarros.mdb;";
+                    glo.Loga("DSN=OrCarro;");
+                    return "connectionString = 'DSN=OrCarro;' ";
                 } else
                 {
-                    return @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + CaminhoBase + ";";
+                    return @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + CaminhoBase + @"\OrCarro.mdb;";
                 }
             }
         }
@@ -293,29 +273,29 @@ namespace TeleBonifacio
             return null;
         }
 
-        public static void CarregarComboBox<T>(ComboBox comboBox, dao.BaseDAO classe, string ItemZero = "", string filtro = "", string ordem = "", string ItemFinal = "", string ItemFinal2 = "") where T : tb.IDataEntity, new()
+        public static void CarregarComboBox<T>(ComboBox comboBox, CobraConcertos.dao.BaseDAO classe, string ItemZero = "", string filtro = "", string ordem = "", string ItemFinal = "", string ItemFinal2 = "") where T : CobraConcertos.tb.IDataEntity, new()
         {
             DataTable dados = classe.GetDadosOrdenados(filtro, ordem);
-            List<tb.ComboBoxItem> lista = new List<tb.ComboBoxItem>();
+            List<CobraConcertos.tb.ComboBoxItem> lista = new List<CobraConcertos.tb.ComboBoxItem>();
             if (ItemZero.Length > 0)
             {
-                tb.ComboBoxItem item = new tb.ComboBoxItem(0, ItemZero);
+                CobraConcertos.tb.ComboBoxItem item = new CobraConcertos.tb.ComboBoxItem(0, ItemZero);
                 lista.Add(item);
             }
             foreach (DataRow row in dados.Rows)
             {
                 int id = Convert.ToInt32(row["id"]);
                 string nome = row["Nome"].ToString();
-                tb.ComboBoxItem item = new tb.ComboBoxItem(id, nome);
+                CobraConcertos.tb.ComboBoxItem item = new CobraConcertos.tb.ComboBoxItem(id, nome);
                 lista.Add(item);
             }
             if (ItemFinal.Length > 0)
             {
-                tb.ComboBoxItem item = new tb.ComboBoxItem(0, ItemFinal);
+                CobraConcertos.tb.ComboBoxItem item = new CobraConcertos.tb.ComboBoxItem(0, ItemFinal);
                 lista.Add(item);
                 if (ItemFinal2.Length > 0)
                 {
-                    tb.ComboBoxItem item2 = new tb.ComboBoxItem(0, ItemFinal2);
+                    CobraConcertos.tb.ComboBoxItem item2 = new CobraConcertos.tb.ComboBoxItem(0, ItemFinal2);
                     lista.Add(item2);
                 }
             }

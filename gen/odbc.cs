@@ -7,7 +7,7 @@ using System.Data.Odbc;
 using System.Data;
 using System.Data.OleDb;
 
-namespace TeleBonifacio.gen
+namespace CobraConcertos.gen
 {
     public static class odbc
     {

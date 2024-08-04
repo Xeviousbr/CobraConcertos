@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace TeleBonifacio.dao
+namespace CobraConcertos.dao
 {
     public abstract class BaseDAO
     {

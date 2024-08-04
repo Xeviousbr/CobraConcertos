@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TeleBonifacio.tb
+namespace CobraConcertos.tb
 {
     public class Entregador : IDataEntity
     {

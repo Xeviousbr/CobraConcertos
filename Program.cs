@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TeleBonifacio
+namespace CobraConcertos
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace TeleBonifacio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new operLogin());
+            Application.Run(new Form1());
         }
     }
 }

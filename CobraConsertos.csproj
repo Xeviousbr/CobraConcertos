@@ -102,26 +102,11 @@
     <Compile Include="gen\glo.cs" />
     <Compile Include="gen\INI.cs" />
     <Compile Include="gen\odbc.cs" />
-    <Compile Include="gen\ValorPorExtenso.cs" />
-    <Compile Include="operSQL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="operSQL.designer.cs">
-      <DependentUpon>operSQL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrCarroDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrCarroDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="tb\Orcamento.cs" />
     <Compile Include="tb\IDataEntity.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="operSQL.resx">
-      <DependentUpon>operSQL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,17 +118,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="OrCarroDataSet.xsc">
-      <DependentUpon>OrCarroDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="OrCarroDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrCarroDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OrCarroDataSet.xss">
-      <DependentUpon>OrCarroDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

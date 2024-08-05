@@ -5,13 +5,6 @@ C:\Prog\CobraConsertos\CobraConsertos\obj\Release\CobraConsertos.csproj.CoreComp
 C:\Prog\CobraConsertos\CobraConsertos\bin\Release\CobraConsertos.exe.config
 C:\Prog\CobraConsertos\CobraConsertos\bin\Release\CobraConsertos.exe
 C:\Prog\CobraConsertos\CobraConsertos\bin\Release\CobraConsertos.pdb
-C:\Prog\CobraConsertos\CobraConsertos\bin\Release\ATCRecordNavigator.dll
-C:\Prog\CobraConsertos\CobraConsertos\bin\Release\SourceGrid.dll
-C:\Prog\CobraConsertos\CobraConsertos\bin\Release\ATCRecordNavigator.pdb
-C:\Prog\CobraConsertos\CobraConsertos\bin\Release\SourceGrid.xml
 C:\Prog\CobraConsertos\CobraConsertos\obj\Release\CobraConcertos.Form1.resources
-C:\Prog\CobraConsertos\CobraConsertos\obj\Release\CobraConcertos.oprConfig.resources
-C:\Prog\CobraConsertos\CobraConsertos\obj\Release\CobraConcertos.operSQL.resources
 C:\Prog\CobraConsertos\CobraConsertos\obj\Release\CobraConsertos.exe
 C:\Prog\CobraConsertos\CobraConsertos\obj\Release\CobraConsertos.pdb
-C:\Prog\CobraConsertos\CobraConsertos\obj\Release\CobraConsertos.csproj.CopyComplete

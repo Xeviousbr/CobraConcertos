@@ -18,6 +18,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btGravar = new System.Windows.Forms.Button();
+            this.btPagou = new System.Windows.Forms.Button();
+            this.txValor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txFone = new System.Windows.Forms.TextBox();
             this.labelFone = new System.Windows.Forms.Label();
             this.txNome = new System.Windows.Forms.TextBox();
@@ -51,6 +55,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btGravar);
+            this.panel1.Controls.Add(this.btPagou);
+            this.panel1.Controls.Add(this.txValor);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txFone);
             this.panel1.Controls.Add(this.labelFone);
             this.panel1.Controls.Add(this.txNome);
@@ -71,14 +79,54 @@
             this.panel1.Size = new System.Drawing.Size(624, 184);
             this.panel1.TabIndex = 1;
             // 
+            // btGravar
+            // 
+            this.btGravar.Enabled = false;
+            this.btGravar.Location = new System.Drawing.Point(537, 149);
+            this.btGravar.Name = "btGravar";
+            this.btGravar.Size = new System.Drawing.Size(75, 23);
+            this.btGravar.TabIndex = 17;
+            this.btGravar.Text = "Gravar";
+            this.btGravar.UseVisualStyleBackColor = true;
+            this.btGravar.Click += new System.EventHandler(this.btGravar_Click);
+            // 
+            // btPagou
+            // 
+            this.btPagou.Location = new System.Drawing.Point(537, 106);
+            this.btPagou.Name = "btPagou";
+            this.btPagou.Size = new System.Drawing.Size(75, 23);
+            this.btPagou.TabIndex = 16;
+            this.btPagou.Text = "Pagou";
+            this.btPagou.UseVisualStyleBackColor = true;
+            this.btPagou.Click += new System.EventHandler(this.btPagou_Click);
+            // 
+            // txValor
+            // 
+            this.txValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txValor.Location = new System.Drawing.Point(409, 64);
+            this.txValor.Name = "txValor";
+            this.txValor.ReadOnly = true;
+            this.txValor.Size = new System.Drawing.Size(80, 22);
+            this.txValor.TabIndex = 15;
+            this.txValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(458, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Valor";
+            // 
             // txFone
             // 
             this.txFone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txFone.Location = new System.Drawing.Point(257, 25);
             this.txFone.Name = "txFone";
-            this.txFone.ReadOnly = true;
             this.txFone.Size = new System.Drawing.Size(144, 22);
             this.txFone.TabIndex = 3;
+            this.txFone.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
             // labelFone
             // 
@@ -94,9 +142,9 @@
             this.txNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNome.Location = new System.Drawing.Point(12, 25);
             this.txNome.Name = "txNome";
-            this.txNome.ReadOnly = true;
             this.txNome.Size = new System.Drawing.Size(239, 22);
             this.txNome.TabIndex = 1;
+            this.txNome.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
             // labelNome
             // 
@@ -112,9 +160,9 @@
             this.txEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txEmail.Location = new System.Drawing.Point(12, 64);
             this.txEmail.Name = "txEmail";
-            this.txEmail.ReadOnly = true;
             this.txEmail.Size = new System.Drawing.Size(389, 22);
             this.txEmail.TabIndex = 5;
+            this.txEmail.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
             // labelEmail
             // 
@@ -130,9 +178,9 @@
             this.txObsConserto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txObsConserto.Location = new System.Drawing.Point(12, 106);
             this.txObsConserto.Name = "txObsConserto";
-            this.txObsConserto.ReadOnly = true;
-            this.txObsConserto.Size = new System.Drawing.Size(600, 22);
+            this.txObsConserto.Size = new System.Drawing.Size(519, 22);
             this.txObsConserto.TabIndex = 7;
+            this.txObsConserto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
             // labelObsConserto
             // 
@@ -148,9 +196,9 @@
             this.txObsCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txObsCliente.Location = new System.Drawing.Point(12, 149);
             this.txObsCliente.Name = "txObsCliente";
-            this.txObsCliente.ReadOnly = true;
-            this.txObsCliente.Size = new System.Drawing.Size(600, 22);
+            this.txObsCliente.Size = new System.Drawing.Size(519, 22);
             this.txObsCliente.TabIndex = 9;
+            this.txObsCliente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
             // labelObsCliente
             // 
@@ -164,16 +212,16 @@
             // txCgcCpf
             // 
             this.txCgcCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txCgcCpf.Location = new System.Drawing.Point(409, 64);
+            this.txCgcCpf.Location = new System.Drawing.Point(497, 64);
             this.txCgcCpf.Name = "txCgcCpf";
-            this.txCgcCpf.ReadOnly = true;
-            this.txCgcCpf.Size = new System.Drawing.Size(203, 22);
+            this.txCgcCpf.Size = new System.Drawing.Size(115, 22);
             this.txCgcCpf.TabIndex = 11;
+            this.txCgcCpf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
             // labelCgcCpf
             // 
             this.labelCgcCpf.AutoSize = true;
-            this.labelCgcCpf.Location = new System.Drawing.Point(409, 48);
+            this.labelCgcCpf.Location = new System.Drawing.Point(497, 48);
             this.labelCgcCpf.Name = "labelCgcCpf";
             this.labelCgcCpf.Size = new System.Drawing.Size(67, 13);
             this.labelCgcCpf.TabIndex = 10;
@@ -186,6 +234,7 @@
             this.cbAtrasado.Size = new System.Drawing.Size(80, 24);
             this.cbAtrasado.TabIndex = 12;
             this.cbAtrasado.Text = "Atrasado";
+            this.cbAtrasado.Click += new System.EventHandler(this.cbAtrasado_Click);
             // 
             // cbFuncionario
             // 
@@ -194,6 +243,7 @@
             this.cbFuncionario.Size = new System.Drawing.Size(87, 24);
             this.cbFuncionario.TabIndex = 13;
             this.cbFuncionario.Text = "Funcionário";
+            this.cbFuncionario.CheckedChanged += new System.EventHandler(this.cbAtrasado_Click);
             // 
             // Form1
             // 
@@ -230,5 +280,9 @@
         private System.Windows.Forms.Label labelCgcCpf;
         private System.Windows.Forms.CheckBox cbAtrasado;
         private System.Windows.Forms.CheckBox cbFuncionario;
+        private System.Windows.Forms.TextBox txValor;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btGravar;
+        private System.Windows.Forms.Button btPagou;
     }
 }

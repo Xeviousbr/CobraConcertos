@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CobraConcertos
@@ -16,6 +18,7 @@ namespace CobraConcertos
         private Color CorOrig;
         private Color CorAlt = Color.FromArgb(255, 255, 200);
         private OrcamentoDao Orc;
+        private INI cINI;
 
         public Form1()
         {
@@ -33,10 +36,10 @@ namespace CobraConcertos
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            INI cINI = new INI();
+            cINI = new INI();
             int UltAtu = cINI.ReadInt("Cobranca", "Atualizacao", 0);
             Orc = new OrcamentoDao();
-            int diaAtual = DateTime.Now.Day;
+            int diaAtual = DateTime.Now.Day;            
             if (UltAtu == 0)
             {
                 Orc.InicializaCobrancas();
@@ -56,18 +59,97 @@ namespace CobraConcertos
             CorOrig = txNome.BackColor;
         }
 
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            if (!atualizando)
+            {
+                atualizando = true;
+                int TirouPagosJa = cINI.ReadInt("Cobranca", "TirouPagos", 0);
+                if (TirouPagosJa == 0)
+                {
+                    TiraPagos();
+                    cINI.WriteInt("Cobranca", "TirouPagos", 1);
+                }
+                atualizando = false;
+            }
+        }
+
+        private void TiraPagos()
+        {
+            float tot = dataGridView1.Rows.Count;
+            float c = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                c++;
+                float prop = c * 100 / tot;
+                this.Text = prop.ToString("F2") + " %";
+                if (prop<1)
+                {
+                    string obs = row.Cells["Obs"].Value.ToString();
+                    if (obs.Length > 0)
+                    {
+                        string[] palavrasChave = { "PAGOU", "PAGO", "PG" };
+                        string pal = "";
+
+                        foreach (string palavra in palavrasChave)
+                        {
+                            if (obs.IndexOf(palavra) >= 0)
+                            {
+                                pal = palavra;
+                                break;
+                            }
+                        }
+                        if (pal.Length > 0)
+                        {
+                            string sTotal = row.Cells["Total"].Value.ToString();
+                            float fToal = glo.LeValor(sTotal);
+                            float oTotal = ExtrairValorPago(pal, obs);
+                            if (!(oTotal < fToal))
+                            {
+                                string orcamentoId = row.Cells["Orcamento"].Value.ToString();
+                                Orc.PagouEsse(orcamentoId);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static float ExtrairValorPago(string palavraChave, string textoCompleto)
+        {
+            // Encontra a posição da palavra-chave
+            int posicaoPago = textoCompleto.IndexOf(palavraChave);
+            if (posicaoPago == -1)
+                return 0; // Palavra-chave não encontrada
+
+            // Extrai a substring após a palavra-chave
+            string subtexto = textoCompleto.Substring(posicaoPago + palavraChave.Length);
+
+            // Usa expressão regular para encontrar o primeiro número com vírgula ou ponto
+            Match match = Regex.Match(subtexto, @"\d+[.,]?\d*");
+            if (!match.Success)
+                return 0; // Nenhum número encontrado
+
+            // Converte a string encontrada para float
+            string valorString = match.Value.Replace(",", ".");
+            if (float.TryParse(valorString, NumberStyles.Any, CultureInfo.InvariantCulture, out float valor))
+                return valor;
+
+            return 0; // Falha na conversão
+        }
+
         private void CarregaGrid()
         {
             DataTable dados = Orc.getDados();
             dataGridView1.DataSource = dados;
-            dataGridView1.Columns["dataalteracao"].Width = 80; // Largura para exibir apenas a data
-            dataGridView1.Columns["dataalteracao"].DefaultCellStyle.Format = "dd/MM/yyyy"; // Formato de data
-            dataGridView1.Columns["Cliente"].Width = 200; // Largura para 30 caracteres
-            dataGridView1.Columns["Total"].Width = 60; // Largura para 6 caracteres
+            dataGridView1.Columns["dataalteracao"].Width = 80; 
+            dataGridView1.Columns["dataalteracao"].DefaultCellStyle.Format = "dd/MM/yyyy"; 
+            dataGridView1.Columns["Cliente"].Width = 200; 
+            dataGridView1.Columns["Total"].Width = 80; 
             dataGridView1.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinhado à direita
             dataGridView1.Columns["Total"].DefaultCellStyle.Format = "C2";
-            dataGridView1.Columns["Obs"].Width = 120; // Largura para 20 caracteres
-            dataGridView1.Columns["Telefone"].Width = 100; // Largura apropriada para dois telefones e uma separação
+            dataGridView1.Columns["Obs"].Width = 120; 
+            dataGridView1.Columns["Telefone"].Width = 100; 
 
             // Tornando as outras colunas invisíveis
             foreach (DataGridViewColumn column in dataGridView1.Columns)
@@ -122,8 +204,7 @@ namespace CobraConcertos
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                MostraEmCima();
-                btPagou.Enabled = (dataGridView1.SelectedRows.Count == 1);
+                MostraEmCima();               
             }
         }
 
@@ -131,7 +212,7 @@ namespace CobraConcertos
         {
             DataGridViewRow row = dataGridView1.SelectedRows[0];
             MostrarDados(row);
-            btPagou.Enabled = (dataGridView1.SelectedRows.Count == 1);
+            btGravar.Enabled = (dataGridView1.SelectedRows.Count == 1);
         }
 
         private void txNome_KeyUp(object sender, KeyEventArgs e)
@@ -210,7 +291,15 @@ namespace CobraConcertos
 
         private void btPagou_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Tem certeza que deseja marcar todos os registros como pagos?",
+            string Msg = "";
+            if (dataGridView1.SelectedRows.Count==1)
+            {
+                Msg = "Tem certeza que deseja marcar todos os registro como pago?";
+            } else
+            {
+                Msg = "Tem certeza que deseja marcar todos os registros como pagos?";
+            }
+            DialogResult result = MessageBox.Show(Msg,
                                                   "Confirmar Atualização",
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
@@ -449,5 +538,6 @@ namespace CobraConcertos
 
 
         #endregion
+
     }
 }

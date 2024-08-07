@@ -84,6 +84,12 @@ namespace CobraConcertos.dao
             return dt;
         }
 
+        internal void PagouEsse(string orcamentoId)
+        {
+            string query = "UPDATE Orcamento SET Pagamento = Date() WHERE Orcamento = " + orcamentoId; 
+            DB.ExecutarComandoSQL(query);
+        }
+
         internal void InicializaCobrancas()
         {
             DB.ExecutarComandoSQL("ALTER TABLE Orcamento ADD COLUMN DataAlteracao DATE");

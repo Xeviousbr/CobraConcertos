@@ -48,7 +48,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(624, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(637, 300);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -76,13 +76,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(624, 184);
+            this.panel1.Size = new System.Drawing.Size(637, 184);
             this.panel1.TabIndex = 1;
             // 
             // btGravar
             // 
             this.btGravar.Enabled = false;
-            this.btGravar.Location = new System.Drawing.Point(537, 149);
+            this.btGravar.Location = new System.Drawing.Point(550, 149);
             this.btGravar.Name = "btGravar";
             this.btGravar.Size = new System.Drawing.Size(75, 23);
             this.btGravar.TabIndex = 17;
@@ -92,7 +92,7 @@
             // 
             // btPagou
             // 
-            this.btPagou.Location = new System.Drawing.Point(537, 106);
+            this.btPagou.Location = new System.Drawing.Point(550, 106);
             this.btPagou.Name = "btPagou";
             this.btPagou.Size = new System.Drawing.Size(75, 23);
             this.btPagou.TabIndex = 16;
@@ -113,7 +113,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(458, 50);
+            this.label1.Location = new System.Drawing.Point(407, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 14;
@@ -178,7 +178,7 @@
             this.txObsConserto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txObsConserto.Location = new System.Drawing.Point(12, 106);
             this.txObsConserto.Name = "txObsConserto";
-            this.txObsConserto.Size = new System.Drawing.Size(519, 22);
+            this.txObsConserto.Size = new System.Drawing.Size(532, 22);
             this.txObsConserto.TabIndex = 7;
             this.txObsConserto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
@@ -196,7 +196,7 @@
             this.txObsCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txObsCliente.Location = new System.Drawing.Point(12, 149);
             this.txObsCliente.Name = "txObsCliente";
-            this.txObsCliente.Size = new System.Drawing.Size(519, 22);
+            this.txObsCliente.Size = new System.Drawing.Size(532, 22);
             this.txObsCliente.TabIndex = 9;
             this.txObsCliente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txNome_KeyUp);
             // 
@@ -212,7 +212,7 @@
             // txCgcCpf
             // 
             this.txCgcCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txCgcCpf.Location = new System.Drawing.Point(497, 64);
+            this.txCgcCpf.Location = new System.Drawing.Point(510, 64);
             this.txCgcCpf.Name = "txCgcCpf";
             this.txCgcCpf.Size = new System.Drawing.Size(115, 22);
             this.txCgcCpf.TabIndex = 11;
@@ -221,7 +221,7 @@
             // labelCgcCpf
             // 
             this.labelCgcCpf.AutoSize = true;
-            this.labelCgcCpf.Location = new System.Drawing.Point(497, 48);
+            this.labelCgcCpf.Location = new System.Drawing.Point(507, 48);
             this.labelCgcCpf.Name = "labelCgcCpf";
             this.labelCgcCpf.Size = new System.Drawing.Size(67, 13);
             this.labelCgcCpf.TabIndex = 10;
@@ -238,7 +238,7 @@
             // 
             // cbFuncionario
             // 
-            this.cbFuncionario.Location = new System.Drawing.Point(489, 23);
+            this.cbFuncionario.Location = new System.Drawing.Point(510, 21);
             this.cbFuncionario.Name = "cbFuncionario";
             this.cbFuncionario.Size = new System.Drawing.Size(87, 24);
             this.cbFuncionario.TabIndex = 13;
@@ -247,13 +247,15 @@
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(624, 484);
+            this.ClientSize = new System.Drawing.Size(637, 484);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Gerenciamento de Cobranças de Consertos";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

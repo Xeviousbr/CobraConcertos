@@ -237,7 +237,7 @@ namespace CobraConcertos
 
         public static void Loga(string message)
         {
-            string logFilePath = @"C:\Entregas\Entregas.txt";
+            string logFilePath = @"Cobranca.txt";
             using (StreamWriter writer = new StreamWriter(logFilePath, true))
             {
                 string Texto = $"{DateTime.Now}: {message}";
